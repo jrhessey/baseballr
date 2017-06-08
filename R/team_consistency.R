@@ -23,7 +23,7 @@ team_consistency <- function(year) {
   teams <- dplyr::select_(teams, ~Tm)
   teams <- dplyr::filter_(teams, ~Tm!="LgAvg", ~Tm!="Tm")
   teams <- teams[c(1:30),] %>% as.data.frame()
-  teams$year <- 2017
+  teams$year <- year
   names(teams) <- c("Tm", "year")
 
   results <- teams %>% group_by_(~Tm, ~year) %>% do_(~team_results_bref(.$Tm, .$year))
